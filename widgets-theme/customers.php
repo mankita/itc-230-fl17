@@ -1,10 +1,12 @@
 <?php include 'includes/config.php' ?>
-<?php include 'includes/header.php' ?>
+<?php get_header() ?>
 <h3>Customers</h3>
 <?php
-    $sql = "select * from test_Customers";
+$sql = "select * from test_Customers";
 
-$iConn = @mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) or die(myerror(__FILE__,__LINE__,mysqli_connect_error()));
+$iConn = @mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME) 
+        or 
+        die(myerror(__FILE__,__LINE__,mysqli_connect_error()));
 $result = mysqli_query($iConn,$sql) or die(myerror(__FILE__,__LINE__,mysqli_error($iConn)));
 if (mysqli_num_rows($result) > 0)//at least one record!
 {//show results
@@ -24,4 +26,4 @@ if (mysqli_num_rows($result) > 0)//at least one record!
 @mysqli_close($iConn); #close connection to database
 
 ?>
-<?php include 'includes/footer.php' ?>
+<?php get_footer() ?>
